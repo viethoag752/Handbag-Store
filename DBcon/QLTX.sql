@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 05, 2024 lúc 05:02 PM
+-- Thời gian đã tạo: Th7 21, 2025 lúc 09:20 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -42,9 +42,7 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`, `price_at_time`, `added_at`) VALUES
 (111111142, 111111140, 123456791, 1, 2900000.00, '2024-10-27 17:55:56'),
-(111111143, 111111140, 123456789, 3, 1242422.00, '2024-10-27 17:56:03'),
-(111111150, 111111160, 123456790, 1, 2500000.00, '2024-11-01 13:25:16'),
-(111111152, 111111160, 123456791, 1, 2900000.00, '2024-11-02 15:01:08');
+(111111143, 111111140, 123456789, 3, 1242422.00, '2024-10-27 17:56:03');
 
 -- --------------------------------------------------------
 
@@ -97,6 +95,38 @@ INSERT INTO `chitiet` (`id_sp`, `thuonghieu`, `xuatxu`, `mausac`, `kichthuoc`) V
 (231543778, 'Chanel', 'Pháp', 'Đen', '12 x 4 x 19cm'),
 (231543779, 'Louis Vuitton', 'Pháp', 'Nâu', '25 x 19 x 11.5cm'),
 (231543780, 'Prada', 'Ý', 'Trắng, đen', '28 x 11 x 31cm');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `donhang`
+--
+
+CREATE TABLE `donhang` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `hoten` varchar(100) NOT NULL,
+  `sdt` varchar(10) NOT NULL,
+  `diachi` varchar(200) NOT NULL,
+  `tongtien` decimal(10,0) NOT NULL,
+  `thoigian` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `donhang`
+--
+
+INSERT INTO `donhang` (`id`, `user_id`, `hoten`, `sdt`, `diachi`, `tongtien`, `thoigian`) VALUES
+(3, 111111160, 'hoang', '', 'hanoi', 5400000, '2024-11-05 17:25:54'),
+(4, 111111160, 'hoang', '', 'hanoi', 5400000, '2024-11-05 17:25:57'),
+(5, 111111160, 'hoang', '', 'hanoi', 1242422, '2024-11-05 17:26:22'),
+(6, 111111160, 'hoang', '', 'hanoi', 1242422, '2024-11-05 17:28:11'),
+(7, 111111160, 'hoang', '', 'hanoi', 1242422, '2024-11-05 17:30:58'),
+(9, 111111160, 'hoang', '', 'hanoi', 1242422, '2024-11-05 17:35:48'),
+(10, 111111160, 'hoang', '', 'hanoi', 1242422, '2024-11-05 17:37:07'),
+(11, 111111160, 'hoang', '', 'hanoi', 1242422, '2024-11-05 17:37:22'),
+(12, 111111160, 'hoang', '', 'hanoi', 0, '2024-11-05 17:58:04'),
+(13, 111111160, '0', '0393475216', 'hanoi', 8300000, '2024-11-06 03:09:32');
 
 -- --------------------------------------------------------
 
@@ -199,9 +229,9 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`id_sp`, `pic_path`, `hang`, `tensp`, `giasp`, `giagiam`, `soluong`, `soluongban`, `detail`) VALUES
-(123456789, 'product_pic\\chanel\\chanel1.webp', 'Chanel', 'Túi Xách Nữ Chanel Coco Mark Top Handle 2way Camera Shoulder Bag Leather Green', 2000000, 1242422, 23, 20, 'Túi Xách Nữ Chanel Coco Mark Top Handle 2way Camera Shoulder Bag Leather Green Màu Xanh Lá là chiếc túi xách cao cấp đến từ thương hiệu Chanel nổi tiếng. Sở hữu tông màu sang trọng cùng thiết kế hiện đại, Chanel Coco Mark Top mang đến cho người dùng trở nên hiện đại và đẳng cấp hơn.'),
-(123456790, 'product_pic\\chanel\\chanel2.png', 'Chanel', 'Túi Đeo Chéo Nữ Chanel C19 Large Caramel Leather Way Flap Bag Màu Nâu', 3000000, 2500000, 30, 10, 'Túi Đeo Chéo Nữ Chanel C19 Large Caramel Leather Way Flap Bag Màu Nâu là chiếc túi xách cao cấp đến từ thương hiệu Chanel nổi tiếng. Với gam màu thời thượng cùng chất liệu bền đẹp, chiếc túi Chanel mang tới cho người dùng một phong cách trẻ trung, sang trọng khi xuống phố.'),
-(123456791, 'product_pic\\louis\\louis1.webp', 'Louis Vuitt', 'Túi Xách Tay Nữ Louis Vuitton LV Twist One Handle PM M57093 Màu Đen', 3500000, 2900000, 25, 12, 'Túi Xách Tay Nữ Louis Vuitton LV Twist One Handle PM M57093 Màu Đen là chiếc túi thời trang đến từ thương hiệu Louis Vuitton nổi tiếng. Túi sở hữu kiểu dáng hiện đại, sang trọng cùng gam màu thời thượng nên được nhiều tín đồ yêu thích và săn đón.'),
+(123456789, 'product_pic\\chanel\\chanel1.webp', 'Chanel', 'Túi Xách Nữ Chanel Coco Mark Top Handle 2way Camera Shoulder Bag Leather Green', 2000000, 1242422, 21, 21, 'Túi Xách Nữ Chanel Coco Mark Top Handle 2way Camera Shoulder Bag Leather Green Màu Xanh Lá là chiếc túi xách cao cấp đến từ thương hiệu Chanel nổi tiếng. Sở hữu tông màu sang trọng cùng thiết kế hiện đại, Chanel Coco Mark Top mang đến cho người dùng trở nên hiện đại và đẳng cấp hơn.'),
+(123456790, 'product_pic\\chanel\\chanel2.png', 'Chanel', 'Túi Đeo Chéo Nữ Chanel C19 Large Caramel Leather Way Flap Bag Màu Nâu', 3000000, 2500000, 28, 11, 'Túi Đeo Chéo Nữ Chanel C19 Large Caramel Leather Way Flap Bag Màu Nâu là chiếc túi xách cao cấp đến từ thương hiệu Chanel nổi tiếng. Với gam màu thời thượng cùng chất liệu bền đẹp, chiếc túi Chanel mang tới cho người dùng một phong cách trẻ trung, sang trọng khi xuống phố.'),
+(123456791, 'product_pic\\louis\\louis1.webp', 'Louis Vuitt', 'Túi Xách Tay Nữ Louis Vuitton LV Twist One Handle PM M57093 Màu Đen', 3500000, 2900000, 22, 14, 'Túi Xách Tay Nữ Louis Vuitton LV Twist One Handle PM M57093 Màu Đen là chiếc túi thời trang đến từ thương hiệu Louis Vuitton nổi tiếng. Túi sở hữu kiểu dáng hiện đại, sang trọng cùng gam màu thời thượng nên được nhiều tín đồ yêu thích và săn đón.'),
 (123456792, 'product_pic\\gucci\\gucci1.webp', 'Gucci', 'Túi Đeo Chéo Gucci GG Ophidia Shoulder Bag Màu Nâu', 4500000, 4000000, 15, 5, 'Túi Đeo Chéo Gucci GG Ophidia Shoulder Bag Màu Nâu là chiếc túi thời trang đến từ thương hiệu Gucci nổi tiếng. Mẫu túi với form dáng đẹp mắt cùng gam màu hiện đại dễ mix đồ.'),
 (123456793, 'product_pic\\prada\\prada1.webp', 'Prada', 'Túi Đeo Chéo Prada Re-Edition 2005 Nylon Bag 1BB846_064_F0002_V_W11 Màu Đen', 3800000, 3300000, 20, 18, 'Túi Đeo Chéo Prada Re-Edition 2005 Nylon Bag 1BB846_064_F0002_V_W11 Màu Đen là chiếc túi xách cao cấp đến từ thương hiệu Prada nổi tiếng. Túi được làm từ chất liệu cao cấp bền đẹp trong suốt quá trình sử dụng.\r\n\r\n'),
 (123456794, 'product_pic\\chanel\\chanel3.png', 'Chanel', 'Túi Đeo Chéo Nữ Chanel Boy Medium Black Carvia Leather Antique Gold Metal ', 2200000, 2000000, 50, 30, 'Túi Đeo Chéo Nữ Chanel Boy Medium Black Carvia Leather Antique Gold Metal Màu Đen là chiếc túi xách thời trang đến từ thương hiệu Chanel nổi tiếng. Chiếc túi với phong cách trẻ trung, đẹp mắt và được thiết kế tỉ mỉ đem tới một vẻ ngoài thanh lịch nhưng cũng thời thượng.'),
@@ -254,7 +284,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `fullname`, `address`, `phone`, `email`, `password`, `created_at`) VALUES
-(111111111, 'Hoangznzn', 'Tran Viet Hoang', 'Hà Nội', '0393475216', 'Hoang@gmail.com', '1234567', '2024-10-22 08:17:55'),
+(213, 'fds', 'fsd', 'fsdfs', '214214', 'fsfsd@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '2024-11-27 07:14:08'),
+(111111111, 'Hoangznzn', 'Tran Viet Hoang', 'Hà Nội', '0393475216', 'Hoang@gmail.com', '12345678', '2024-10-22 08:17:55'),
 (111111140, 'HoangAnh', 'Tran Hoang Anh', 'Hà Nội', '0123456789', 'b@gmail.com', '1234567', '2024-10-22 08:23:24'),
 (111111141, 'NHAnh', 'Nguyen Hoang Anh', 'Hà Nội', '0987654321', 'c@gmail.com', '1234567', '2024-10-22 08:23:24'),
 (111111142, 'test', 'test', 'Thai Binh', '0321321312', 'd@gmail.com', '1234567', '2024-10-22 08:23:24'),
@@ -280,6 +311,13 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `chitiet`
   ADD PRIMARY KEY (`id_sp`);
+
+--
+-- Chỉ mục cho bảng `donhang`
+--
+ALTER TABLE `donhang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Chỉ mục cho bảng `lienhe`
@@ -316,7 +354,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111111153;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111111160;
+
+--
+-- AUTO_INCREMENT cho bảng `donhang`
+--
+ALTER TABLE `donhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `lienhe`
@@ -346,6 +390,12 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `chitiet`
   ADD CONSTRAINT `chitiet_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `sanpham` (`id_sp`);
+
+--
+-- Các ràng buộc cho bảng `donhang`
+--
+ALTER TABLE `donhang`
+  ADD CONSTRAINT `donhang_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Các ràng buộc cho bảng `lienhe`
